@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Session;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -36,7 +37,8 @@ class AuthenticatedSessionController extends Controller
         }elseif($request->user()->role === 'agent'){
             $url = route('agent.dashboard');
         }elseif($request->user()->role === 'user'){
-            $url = route('dashboard');
+            $url = route('home');
+            Session::put('user_id',  Auth::user()->id);
         }
 
         return redirect()->intended($url);
