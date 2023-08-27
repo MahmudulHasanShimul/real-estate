@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+//For Admin Authentication
 Route::get('/admin/login',[AdminController::class,'adminLogin'])->name('admin.login');
 
 Route::middleware(['auth', 'role:admin'])->group(function(){
@@ -40,8 +41,13 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::get('/admin/dashboard',[AdminController::class,'adminDashboard'])->name('admin.dashboard');
     Route::get('/admin/logout',[AdminController::class,'adminLogout'])->name('admin.logout');
     Route::get('/admin/profile',[AdminController::class,'adminProfile'])->name('admin.profile');
+    Route::post('/admin/profile/update',[AdminController::class,'adminProfileUpdate'])->name('admin.profile.update');
+    Route::get('/admin/change/password',[AdminController::class,'adminChangePassword'])->name('admin.change.password');
+    Route::post('/admin/update/password',[AdminController::class,'adminUpdatePassword'])->name('admin.update.password');
 });
 
+
+//For Admin Authentication
 Route::middleware(['auth', 'role:agent'])->group(function(){
 
     Route::get('/agent/dashboard',[AgentController::class,'agentDashboard'])->name('agent.dashboard');

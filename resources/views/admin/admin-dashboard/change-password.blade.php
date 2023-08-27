@@ -1,6 +1,6 @@
 @extends('admin.admin-master')
 @section('title')
-    Admin Profile | Real Estate
+    Change Password | Real Estate
 @endsection
 @section('page-content')
     <div class="page-content">
@@ -55,53 +55,34 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h6 class="card-title">Update Admin Profile</h6>
+                            <h6 class="card-title">Change Admin Password</h6>
 
-                            <form class="forms-sample" action="{{ route('admin.profile.update') }}" method="POST"
+                            <form class="forms-sample" action="{{ route('admin.update.password') }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="row mb-3">
-                                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Username</label>
+                                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Old Password</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="username"
-                                            id="exampleInputUsername2" value="{{ $profileData->username }}">
+                                        <input type="password" class="form-control @error('old_password') is-invalid @enderror" name="old_password" id="old_password">
+                                        @error('old_password')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Name</label>
+                                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">New Password</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="name" id="exampleInputUsername2"
-                                            value="{{ $profileData->name }}">
+                                        <input type="password" class="form-control @error('new_password') is-invalid @enderror" 
+                                        name="new_password" id="new_password">
+                                        @error('new_password')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Email</label>
+                                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Confirm New Password</label>
                                     <div class="col-sm-9">
-                                        <input type="email" class="form-control" name="email" id="exampleInputEmail2"
-                                            value="{{ $profileData->email }}">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Mobile</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="phone" id="exampleInputEmail2"
-                                            value="{{ $profileData->phone }}">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="exampleInputMobile" class="col-sm-3 col-form-label">Address</label>
-                                    <div class="col-sm-9">
-                                        <textarea class="form-control" name="address">{{ $profileData->address }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Photo</label>
-                                    <div class="col-sm-9">
-                                        <input type="file" class="form-control" id="image" name="photo"
-                                            id="exampleInputEmail2" value="{{ $profileData->photo }}">
-                                        <img class="wd-80 rounded-circle mt-3" id="showImage"
-                                            src="{{ !empty($profileData->photo) ? asset('/') . $profileData->photo : url('upload/admin-image/no_image.jpg') }}"
-                                            alt="profile">
+                                        <input type="password" class="form-control" name="new_password_confirmation" id="Confirm_new_password">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary me-2">Save Changes</button>
@@ -114,18 +95,4 @@
             <!-- middle wrapper end -->
         </div>
     </div>
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#image').change(function(e) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#showImage').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(e.target.files['0']);
-            });
-        });
-    </script>
 @endsection
