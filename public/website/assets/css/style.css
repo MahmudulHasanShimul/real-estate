@@ -9825,3 +9825,39 @@ div#mCSB_1_container{
 .search-field .top-search .search-btn button i{
   margin-right: 8px;
 }
+
+
+.image-sizing img{
+  width: 100px;
+  height: auto;
+  display: flex;
+  border-radius: 50%;
+  border: 10px solid #ffffff;
+}
+
+.image-sizing span{
+  font-size: 25px;
+  font-weight: bold;
+  color: black;
+}
+
+.profile-content label{
+  color: black;
+  font-weight: 500;
+}
+
+.profile-content p{
+  color: black;
+}
+
+.custom-form label{
+  color: black;
+}
+
+.custom-form img{
+  width: 80px;
+  height: auto;
+  display: flex;
+  border-radius: 50%;
+  border: 10px solid #ffffff;
+}

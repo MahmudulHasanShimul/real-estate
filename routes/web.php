@@ -5,6 +5,7 @@ use App\Http\Controllers\AgentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,22 @@ Route::get('/agent-or-user/login',[AuthController::class,'agentOrUserLogin'])->n
 
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/agent-or-user/logout',[AuthController::class,'agentOrUserOut'])->name('agent-or-user.logout');
+    Route::get('/user/profile',[UserController::class,'userProfile'])->name('user.profile');
+    Route::post('/user/profile/update',[UserController::class,'userProfileUpdate'])->name('userProfile.update');
+    Route::get('/user/change/password',[UserController::class,'userChangePassword'])->name('user.change.password');
+    Route::post('/user/update/password',[UserController::class,'userUpdatePassword'])->name('user.update.password');
 });
+
+//For Agent Authentication
+Route::middleware(['auth', 'role:agent'])->group(function(){
+
+    Route::get('/agent/dashboard',[AgentController::class,'agentDashboard'])->name('agent.dashboard');
+    Route::get('/agent-or-user/logout',[AuthController::class,'agentOrUserOut'])->name('agent-or-user.logout');
+    Route::get('/agent/profile',[AgentController::class, 'agentProfile'])->name('agent.profile');
+    Route::post('/agent/profile/update',[AgentController::class, 'agentProfileUpdate'])->name('agentProfile.update');
+
+});
+
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -52,8 +68,3 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
 });
 
 
-//For Admin Authentication
-Route::middleware(['auth', 'role:agent'])->group(function(){
-
-    Route::get('/agent/dashboard',[AgentController::class,'agentDashboard'])->name('agent.dashboard');
-});

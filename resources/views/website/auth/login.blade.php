@@ -43,16 +43,16 @@
                             <div class="tab active-tab" id="tab-1">
                                 <div class="inner-box">
                                     <h4>Sign in</h4>
-                                    <form action="http://azim.commonsupport.com/Realshed/signin.html" method="post"
+                                    <form action="{{route('login')}}" method="POST"
                                         class="default-form">
-                                        
+                                        @csrf
                                         <div class="form-group">
-                                            <label>Email address</label>
-                                            <input type="email" name="email" required="">
+                                            <label>Agent Name/Email/Phone</label>
+                                            <input type="text" name="login" required="">
                                         </div>
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input type="password" name="name" required="">
+                                            <input type="password" name="password" required="">
                                         </div>
                                         <div class="form-group message-btn">
                                             <button type="submit" class="theme-btn btn-one">Sign in</button>
@@ -70,7 +70,7 @@
                                         class="default-form">
                                         @csrf
                                         <div class="form-group">
-                                            <label>Email/User Name/Phone</label>
+                                            <label>User Name/Email/Phone</label>
                                             <input type="text" name="login" required="">
                                         </div>
                                         <div class="form-group">

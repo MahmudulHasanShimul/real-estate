@@ -8,5 +8,6 @@
 <link href="{{ asset('/') }}website/assets/css/nice-select.css" rel="stylesheet">
 <link href="{{ asset('/') }}website/assets/css/color/theme-color.css" id="jssDefault" rel="stylesheet">
 <link href="{{ asset('/') }}website/assets/css/switcher-style.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 <link href="{{ asset('/') }}website/assets/css/style.css" rel="stylesheet">
 <link href="{{ asset('/') }}website/assets/css/responsive.css" rel="stylesheet">

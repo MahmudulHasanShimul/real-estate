@@ -46,7 +46,7 @@ class AdminController extends Controller
     }
 
     public function adminProfileUpdate(Request $request){
-        $id = Auth::user()->id;
+        $id                     = Auth::user()->id;
         $profileData            = User::find($id);
         $profileData->username  = $request->username;
         $profileData->name      = $request->name;

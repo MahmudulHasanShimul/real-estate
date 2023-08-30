@@ -18,9 +18,9 @@
                     <li><a href="index.html"><i class="fab fa-vimeo-v"></i></a></li>
                 </ul>
 
-                    @if (Session::get('user_id'))
+                    @if (Session::get('user_id') || Session::get('agent_id'))
                         <div class="sign-box">
-                            <a href=""><i class="fas fa-user"></i>Profile</a>
+                            <a href="{{session::get('user_id') ? route('user.profile') : route('agent.profile')}}"><i class="fas fa-user"></i>Profile</a>
                         </div>
                         <div class="sign-box">
                             <span>&nbsp | &nbsp</span>

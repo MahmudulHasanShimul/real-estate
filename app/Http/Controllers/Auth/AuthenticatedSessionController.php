@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Contracts\Session\Session as SessionSession;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,7 +36,8 @@ class AuthenticatedSessionController extends Controller
         if($request->user()->role === 'admin'){
             $url = route('admin.dashboard');
         }elseif($request->user()->role === 'agent'){
-            $url = route('agent.dashboard');
+            $url = route('home');
+            Session::put('agent_id', Auth::user()->id);
         }elseif($request->user()->role === 'user'){
             $url = route('home');
             Session::put('user_id',  Auth::user()->id);
