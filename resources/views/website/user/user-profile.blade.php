@@ -37,6 +37,10 @@
                                     </div>
                                     <div class="profile-content">
                                         <div class="mt-3">
+                                            <label class="tx-11 fw-bolder mb-0 text-uppercase">Role:</label>
+                                            <p>{{ $profileData->role }}</p>
+                                        </div>
+                                        <div class="mt-3">
                                             <label class="tx-11 fw-bolder mb-0 text-uppercase">Name:</label>
                                             <p>{{ $profileData->name }}</p>
                                         </div>

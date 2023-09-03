@@ -36,11 +36,11 @@ class AuthenticatedSessionController extends Controller
         if($request->user()->role === 'admin'){
             $url = route('admin.dashboard');
         }elseif($request->user()->role === 'agent'){
-            $url = route('home');
             Session::put('agent_id', Auth::user()->id);
-        }elseif($request->user()->role === 'user'){
             $url = route('home');
+        }elseif($request->user()->role === 'user'){
             Session::put('user_id',  Auth::user()->id);
+            $url = route('home');
         }
 
         return redirect()->intended($url);

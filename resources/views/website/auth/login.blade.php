@@ -14,7 +14,7 @@
             <div class="content-box clearfix">
                 <h1>Sign In</h1>
                 <ul class="bread-crumb clearfix">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{route('home')}}">Home</a></li>
                     <li>Sign In</li>
                 </ul>
             </div>
@@ -59,7 +59,7 @@
                                         </div>
                                     </form>
                                     <div class="othre-text">
-                                        <p>Have not any account? <a href="signup.html">Register Now</a></p>
+                                        <p>Have not any account? <a href="{{route('create.new.profile')}}">Register Now</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                                         </div>
                                     </form>
                                     <div class="othre-text">
-                                        <p>Have not any account? <a href="signup.html">Register Now</a></p>
+                                        <p>Have not any account? <a href="{{route('create.new.profile')}}">Register Now</a></p>
                                     </div>
                                 </div>
                             </div>

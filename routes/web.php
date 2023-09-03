@@ -21,9 +21,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/agent-or-user/login',[AuthController::class,'agentOrUserLogin'])->name('agent-or-user.login');
+Route::get('/create-new/profile',[AuthController::class,'createProfile'])->name('create.new.profile');
+Route::post('/store-new/profile',[AuthController::class,'storeProfile'])->name('store.new.profile');
 
 Route::middleware(['auth', 'role:user'])->group(function () {
-    Route::get('/agent-or-user/logout',[AuthController::class,'agentOrUserOut'])->name('agent-or-user.logout');
+    Route::get('/user/logout',[AuthController::class,'userLogOut'])->name('user.logout');
     Route::get('/user/profile',[UserController::class,'userProfile'])->name('user.profile');
     Route::post('/user/profile/update',[UserController::class,'userProfileUpdate'])->name('userProfile.update');
     Route::get('/user/change/password',[UserController::class,'userChangePassword'])->name('user.change.password');
@@ -33,10 +35,11 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 //For Agent Authentication
 Route::middleware(['auth', 'role:agent'])->group(function(){
 
-    Route::get('/agent/dashboard',[AgentController::class,'agentDashboard'])->name('agent.dashboard');
-    Route::get('/agent-or-user/logout',[AuthController::class,'agentOrUserOut'])->name('agent-or-user.logout');
+    Route::get('/agent/logout',[AuthController::class,'agentLogOut'])->name('agent.logout');
     Route::get('/agent/profile',[AgentController::class, 'agentProfile'])->name('agent.profile');
     Route::post('/agent/profile/update',[AgentController::class, 'agentProfileUpdate'])->name('agentProfile.update');
+    Route::get('/agent/change/password',[AgentController::class, 'agentChangePassword'])->name('agent.change.password');
+    Route::post('/agent/update/password',[AgentController::class, 'agentUpdatePassword'])->name('agent.update.password');
 
 });
 

@@ -18,22 +18,29 @@
                     <li><a href="index.html"><i class="fab fa-vimeo-v"></i></a></li>
                 </ul>
 
-                    @if (Session::get('user_id') || Session::get('agent_id'))
-                        <div class="sign-box">
-                            <a href="{{session::get('user_id') ? route('user.profile') : route('agent.profile')}}"><i class="fas fa-user"></i>Profile</a>
-                        </div>
-                        <div class="sign-box">
-                            <span>&nbsp | &nbsp</span>
-                        </div>
-                        <div class="sign-box">
-                            <a href="{{route('agent-or-user.logout')}}">Sign Out</a>
-                        </div>
-                    @else
+                @if (Session::get('user_id') || Session::get('agent_id'))
                     <div class="sign-box">
-                        <a href="{{route('agent-or-user.login')}}"><i class="fas fa-user"></i>Sign In</a>
+                        <a href="{{ Session::get('user_id') ? route('user.profile') : route('agent.profile') }}"><i
+                                class="fas fa-user"></i>Profile</a>
                     </div>
-                    @endif
-                
+                    <div class="sign-box">
+                        <span>&nbsp | &nbsp</span>
+                    </div>
+                    <div class="sign-box">
+                        <a href="{{ Session::get('user_id') ? route('user.logout') : route('agent.logout') }}">Sign Out</a>
+                    </div>
+                @else
+                    <div class="sign-box">
+                        <a href="{{ route('agent-or-user.login') }}"><i class="fas fa-user"></i>Sign In</a>
+                    </div>
+                    <div class="sign-box">
+                        <span>&nbsp | &nbsp</span>
+                    </div>
+                    <div class="sign-box">
+                        <a href="{{route('create.new.profile')}}"></i>Register</a>
+                    </div>
+                @endif
+
             </div>
         </div>
     </div>
@@ -42,7 +49,7 @@
         <div class="outer-box">
             <div class="main-box">
                 <div class="logo-box">
-                    <figure class="logo"><a href="{{route('home')}}"><img
+                    <figure class="logo"><a href="{{ route('home') }}"><img
                                 src="{{ asset('/') }}website/assets/images/logo.png" alt=""></a></figure>
                 </div>
                 <div class="menu-area clearfix">
