@@ -5,6 +5,7 @@ use App\Http\Controllers\AgentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PropertyTypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -68,6 +69,16 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::post('/admin/profile/update',[AdminController::class,'adminProfileUpdate'])->name('admin.profile.update');
     Route::get('/admin/change/password',[AdminController::class,'adminChangePassword'])->name('admin.change.password');
     Route::post('/admin/update/password',[AdminController::class,'adminUpdatePassword'])->name('admin.update.password');
+
+    //Property Type group controller
+    Route::controller(PropertyTypeController::class)->group(function(){
+        Route::get('/admin/property-type/manage', 'propertyTypeManage')->name('propertyType.manage');
+        Route::get('/admin/property-type/add', 'propertyTypeAdd')->name('propertyType.add');
+        Route::post('/admin/property-type/store', 'propertyTypeStore')->name('propertyType.store');
+        Route::get('/admin/property-type/edit/{id}', 'propertyTypeEdit')->name('propertyType.edit');
+        Route::post('/admin/property-type/update/{id}', 'propertyTypeUpdate')->name('propertyType.update');
+        Route::get('/admin/property-type/delete/{id}','propertyTypeDelete')->name('propertyType.delete');
+    });
 });
 
 

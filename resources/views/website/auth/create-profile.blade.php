@@ -43,23 +43,70 @@
                             <div class="tab active-tab" id="tab-1">
                                 <div class="inner-box">
                                     <h4>Sign up</h4>
-                                    <form action="http://azim.commonsupport.com/Realshed/signin.html" method="post"
-                                        class="default-form">
+                                    <form action="{{route('store.new.profile')}}"
+                                        method="post" enctype="multipart/form-data" class="create-Profle default-form">
+                                        @csrf
                                         <div class="form-group">
-                                            <label>Agent name</label>
+                                            <label class="form-label @error('name')
+                                                is-invalid
+                                                @enderror">Agent Name</label>
                                             <input type="text" name="name" required="">
+                                            @error('name')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label>Email address</label>
+                                            <label>Agent Username</label>
+                                            <input type="text" name="username">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-group">
+                                                <label class="form-label @error('email')
+                                                is-invalid
+                                                @enderror">Email address</label>
                                             <input type="email" name="email" required="">
+                                            @error('email')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label>New Password</label>
-                                            <input type="password" name="name" required="">
+                                            <label class="form-group">
+                                                <label class="form-label @error('password')
+                                                is-invalid
+                                                @enderror">New Password</label>
+                                            <input type="password" name="password" required="">
+                                            @error('password')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label>Confirm Password</label>
-                                            <input type="password" name="name" required="">
+                                            <input type="password" name="password_confirmation" required="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-group">
+                                                <label class="form-label @error('phone')
+                                                is-invalid
+                                                @enderror">Phone</label>
+                                            <input type="text" name="phone">
+                                            @error('phone')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Address</label>
+                                            <textarea name="address"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Photo</label>
+                                            <input type="file" class="form-control-file" name="photo" id="image" onclick = 'showImage(this)'>
+                                            <img id="showImage" class="create-Profle-img" src="" alt="profile">
+                                        </div>
+                                        <div class="form-group">
+                                                <label>Role</label>
+                                                <div>
+                                                   <label> <input type="radio" name="role" value="agent" checked> Agent</label>
+                                                </div>
                                         </div>
                                         <div class="form-group message-btn">
                                             <button type="submit" class="theme-btn btn-one">Sign up</button>
@@ -167,5 +214,13 @@
                 reader.readAsDataURL(e.target.files['0']);
             });
         });
+    </script>
+
+    <script>
+        function showImage(cuurentImage){
+            let image = cuurentImage.nextElementSibling;
+            image.classList.remove("create-Profle-img");
+            image.classList.add("show-image");
+        }
     </script>
 @endsection
