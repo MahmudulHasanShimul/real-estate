@@ -13,7 +13,6 @@
 
 <link rel="stylesheet" href="{{asset('/')}}admin/assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
 
-
 <!-- Layout styles -->  
 <link rel="stylesheet" href="{{asset('/')}}admin/assets/css/demo2/style.css">
 <!-- End layout styles -->

@@ -1,6 +1,6 @@
 @extends('admin.admin-master')
 @section('title')
-    Manage Property Type
+    Manage Amenity
 @endsection
 
 @section('page-content')
@@ -8,7 +8,7 @@
 
         <nav class="page-breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Property Type</a></li>
+                <li class="breadcrumb-item"><a href="#">Amenity</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Manage</li>
             </ol>
         </nav>
@@ -24,21 +24,19 @@
                                     <tr>
                                         <th>SL NO.</th>
                                         <th>ID</th>
-                                        <th>Property-type Name</th>
-                                        <th>Property-type Icon</th>
+                                        <th>Amenity Name</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($propertyTypes as $propertyType)
+                                    @foreach ($amenities as $amenity)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $propertyType->id }}</td>
-                                            <td>{{ $propertyType->property_type_name }}</td>
-                                            <td>{{ $propertyType->property_type_icon }}</td>
+                                            <td>{{ $amenity->id }}</td>
+                                            <td>{{ $amenity->amenity_name }}</td>
                                             <td>
-                                                <a href="{{route('propertyType.edit',['id' => $propertyType->id])}}" class="btn btn-inverse-warning">Edit</a>
-                                                <a href="{{route('propertyType.delete',['id' => $propertyType->id])}}" class="btn btn-inverse-danger" id="delete">Delete</a>
+                                                <a href="{{route('amenity.edit',['id' => $amenity->id])}}" class="btn btn-inverse-warning">Edit</a>
+                                                <a href="{{route('amenity.delete',['id' => $amenity->id])}}" class="btn btn-inverse-danger" id="delete">Delete</a>
                                             </td>
                                         </tr>
                                     @endforeach

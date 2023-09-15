@@ -22,6 +22,8 @@
  <script src="{{ asset('/') }}admin/assets/js/dashboard-dark.js"></script>
  <!-- End custom js for this page -->
  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+ <script src="{{ asset('/') }}admin/assets/js/custom-sweet-alert.js"></script>
 
  <script>
     @if(Session::has('message'))
